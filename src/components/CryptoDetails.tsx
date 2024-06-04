@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import SupplyChart from "./charts/SupplyChart";
 import VolumeChart from "./charts/VolumeChart";
-import Back from "./utils/back";
+import Back from "./utils/Back";
 
 export default function CryptoDetails() {
   const [data, setData] = useState<CoinData[] | undefined>(undefined);
