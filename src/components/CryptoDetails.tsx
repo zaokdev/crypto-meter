@@ -1,11 +1,13 @@
 "use client";
+import { CoinData } from "@/types";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import SupplyChart from "./charts/SupplyChart";
 import VolumeChart from "./charts/VolumeChart";
+import Back from "./utils/back";
 
 export default function CryptoDetails() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<CoinData[] | undefined>(undefined);
   const [error, setError] = useState(false);
   const { id } = useParams();
 
@@ -16,7 +18,6 @@ export default function CryptoDetails() {
       );
       const data = await response.json();
       if (data.length === 0) {
-        console.log("NO EXISTE");
         setError(true);
         return;
       }
@@ -36,30 +37,32 @@ export default function CryptoDetails() {
 
   if (data && data[0]) {
     return (
-      <section className="container mx-auto lg:grid lg:grid-cols-12 lg:gap-12 lg:h-screen py-12">
-        <div className="lg:col-span-7 border rounded-xl">
-          <h1 className="lg:text-8xl font-semibold tracking-tight">
+      <section className="container mx-auto flex flex-col gap-16 lg:grid lg:grid-cols-12 lg:gap-12 lg:h-screen py-12">
+        <div className="lg:col-span-7 rounded-xl p-12 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 relative">
+        <Back />
+          <h1 className="text-8xl text-center font-extralight tracking-tight">
+            
             {data[0].name}
           </h1>
-          <p>{data[0].symbol}</p>
+          <p className="mt-5">{data[0].symbol}</p>
           <p>
-            Rank: <br />
-            <strong className="">#{data[0].rank}</strong>
+            Rank:
+            <strong className=""> #{data[0].rank}</strong>
           </p>
           <p>
-            Real-Time USD Price: <br />
-            <strong className="">{data[0].price_usd}</strong>
+            Real-Time USD Price:
+            <strong className=""> {data[0].price_usd}</strong>
           </p>
         </div>
-        <div className="lg:col-span-5 xl:flex lg:flex-col gap-12">
-          <div className="lg:w-full lg:h-1/2 border rounded-xl flex flex-col items-center justify-center p-4">
+        <div className="lg:col-span-5 flex flex-col gap-12">
+          <div className="lg:w-full lg:h-1/2 rounded-xl flex flex-col items-center justify-center p-4 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900">
             <SupplyChart
               csupply={data[0].csupply}
               tsupply={data[0].tsupply}
               msupply={data[0].msupply}
             />
           </div>
-          <div className="lg:w-full lg:h-1/2 border rounded-xl flex flex-col items-center justify-center p-4">
+          <div className="lg:w-full lg:h-1/2 rounded-xl flex flex-col items-center justify-center p-4 dark:bg-gradient-to-tr dark:from-zinc-800 dark:to-zinc-900">
             <VolumeChart
               percent_change_1h={data[0].percent_change_1h}
               percent_change_24h={data[0].percent_change_24h}

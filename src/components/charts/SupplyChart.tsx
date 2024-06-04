@@ -25,6 +25,10 @@ export default function SupplyChart({csupply, tsupply, msupply}:Props) {
             }
         ]
     }
+
+    if (remainingSupply < 0){
+        return <span>Unknown Supply</span>
+    }
   return (
     <Doughnut data={chartData} />
   )

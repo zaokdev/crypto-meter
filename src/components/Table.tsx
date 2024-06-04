@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
+import { CoinData } from "@/types";
 import {
   useReactTable,
   getCoreRowModel,
@@ -11,7 +12,7 @@ import {
 import { Search } from "lucide-react";
 
 export default function Table() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<CoinData[] | undefined>(undefined);
   const [filtering, setFiltering] = useState("");
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Table() {
     {
       header: "Currency Name",
       accessorKey: "name",
-      cell: (info) => (
+      cell: (info:any) => (
         <a href={`cryptos/${info.row.original.id}`} className="text-2xl font-medium text-almost-white">{info.row.original.name}</a>
       ),
     },
@@ -46,7 +47,7 @@ export default function Table() {
     {
       header: "Price Change 24h",
       accessorKey: "percent_change_24h",
-      cell: (info) => (
+      cell: (info:any) => (
         <span className={`${info.row.original.percent_change_24h[0] === "-" ? "text-red-500":'text-green-500'} text-xl font-semibold`}>{info.row.original.percent_change_24h}</span>
       )
         
