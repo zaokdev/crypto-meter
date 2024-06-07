@@ -34,7 +34,7 @@ export default function Table() {
       accessorKey: "symbol",
     },
     {
-      header: "Currency Name",
+      header: "Name",
       accessorKey: "name",
       cell: (info:any) => (
         <a href={`cryptos/${info.row.original.id}`} className="text-2xl font-medium text-almost-white">{info.row.original.name}</a>
