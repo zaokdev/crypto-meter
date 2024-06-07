@@ -1,5 +1,6 @@
 "use client"
 
+import currency from "currency.js";
 import React, { useEffect, useState } from "react";
 import { CoinData } from "@/types";
 import {
@@ -37,12 +38,15 @@ export default function Table() {
       header: "Name",
       accessorKey: "name",
       cell: (info:any) => (
-        <a href={`cryptos/${info.row.original.id}`} className="text-2xl font-medium text-almost-white">{info.row.original.name}</a>
+        <a href={`cryptos/${info.row.original.id}`} className="text-2xl font-medium dark:text-almost-white text-surface">{info.row.original.name}</a>
       ),
     },
     {
       header: "Live USD Price",
       accessorKey: "price_usd",
+      cell: (info:any) => (
+        <span>{parseFloat(info.row.original.price_usd) > 0.99 ? currency(info.row.original.price_usd).format():"$" + info.row.original.price_usd}</span>
+      )
     },
     {
       header: "Price Change 24h",
@@ -79,7 +83,7 @@ export default function Table() {
           type="text"
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
-          className="dark:bg-surface block rounded-xl px-4 pr-20 h-full outline-none"
+          className="dark:bg-surface bg-slate-100 focus:bg-slate-50 transition-colors block rounded-xl px-4 pr-20 h-full outline-none"
         ></input>
         <Search className="absolute right-4"/>
       </div>
@@ -89,7 +93,7 @@ export default function Table() {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="border-y dark:border-gray-600 py-6 font-bold">
+                <th key={header.id} className="border-y dark:border-gray-600 py-6 border-surface font-bold">
                   {flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
@@ -102,7 +106,7 @@ export default function Table() {
               {row.getVisibleCells().map((cell) => (
                 <td
                   key={cell.id}
-                  className="border-y dark:border-gray-700 py-6"
+                  className="border-y dark:border-gray-700 border-surface py-6"
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
@@ -111,21 +115,21 @@ export default function Table() {
           ))}
         </tbody>
       </table>
-      <section className="flex gap-12 mt-6 justify-center">
-        <button onClick={() => table.setPageIndex(0)} className="w-16 h-16 rounded-xl dark:bg-surface">
+      <section className="flex gap-12 mt-6 justify-center pb-12">
+        <button onClick={() => table.setPageIndex(0)} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
           {"<<"}
         </button>
-        <button onClick={() => table.previousPage()} className="w-16 h-16 rounded-xl dark:bg-surface">
+        <button onClick={() => table.previousPage()} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
           {"<"}
         </button>
         <button onClick={() => {
           table.nextPage() 
-        }} className="w-16 h-16 rounded-xl dark:bg-surface">
+        }} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
           {">"}
         </button>
         <button
           onClick={() => table.setPageIndex(table.getPageCount)}
-          className="w-16 h-16 rounded-xl dark:bg-surface"
+          className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors"
         >
           {">>"}
         </button>

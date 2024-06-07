@@ -15,7 +15,7 @@ export default function SupplyChart({csupply, tsupply, msupply}:Props) {
 
     
     const chartData = {
-        labels: ['Suministro Circulante', 'Suministro restante'],
+        labels: ['Circulating supply', 'Remaining supply'],
         datasets: [
             {
                 data: [csupply, remainingSupply],
