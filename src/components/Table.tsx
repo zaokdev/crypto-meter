@@ -83,7 +83,7 @@ export default function Table() {
           type="text"
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
-          className="dark:bg-surface bg-slate-100 focus:bg-slate-50 transition-colors block rounded-xl px-4 pr-20 h-full outline-none"
+          className="dark:bg-surface dark:focus:bg-zinc-600 bg-slate-100 focus:bg-slate-50 transition-colors block rounded-xl px-4 pr-20 h-full outline-none"
         ></input>
         <Search className="absolute right-4"/>
       </div>
@@ -116,20 +116,20 @@ export default function Table() {
         </tbody>
       </table>
       <section className="flex gap-12 mt-6 justify-center pb-12">
-        <button onClick={() => table.setPageIndex(0)} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
+        <button onClick={() => table.setPageIndex(0)} className="w-16 h-16 rounded-xl dark:bg-surface dark:hover:bg-zinc-600 bg-slate-100 hover:bg-slate-50 transition-colors">
           {"<<"}
         </button>
-        <button onClick={() => table.previousPage()} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
+        <button onClick={() => table.previousPage()} className="w-16 h-16 rounded-xl dark:bg-surface dark:hover:bg-zinc-600 bg-slate-100 hover:bg-slate-50 transition-colors">
           {"<"}
         </button>
         <button onClick={() => {
           table.nextPage() 
-        }} className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors">
+        }} className="w-16 h-16 rounded-xl dark:bg-surface dark:hover:bg-zinc-600 bg-slate-100 hover:bg-slate-50 transition-colors">
           {">"}
         </button>
         <button
           onClick={() => table.setPageIndex(table.getPageCount)}
-          className="w-16 h-16 rounded-xl dark:bg-surface bg-slate-100 hover:bg-slate-50 transition-colors"
+          className="w-16 h-16 rounded-xl dark:bg-surface dark:hover:bg-zinc-600 bg-slate-100 hover:bg-slate-50 transition-colors"
         >
           {">>"}
         </button>
