@@ -1,0 +1,12 @@
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\bin\Debug\net8.0\CryptoMeter.Shared.deps.json
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\bin\Debug\net8.0\CryptoMeter.Shared.dll
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\bin\Debug\net8.0\CryptoMeter.Shared.pdb
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.AssemblyInfoInputs.cache
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.AssemblyInfo.cs
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.sourcelink.json
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.dll
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\refint\CryptoMeter.Shared.dll
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\CryptoMeter.Shared.pdb
+C:\Users\Kevin\Desktop\desarrollo_web\Frontend\Proyectos_portafolio\crypto-meter\CryptoMeter\CryptoMeter.Shared\obj\Debug\net8.0\ref\CryptoMeter.Shared.dll
