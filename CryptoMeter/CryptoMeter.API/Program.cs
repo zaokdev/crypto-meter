@@ -10,6 +10,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -62,6 +63,13 @@ options.SignIn.RequireConfirmedAccount = false)
 //Para usar en otro lado fuera de Program.cs
 builder.Services.AddSingleton(validationParameters);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NuevaPolitica", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -75,6 +83,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+app.UseCors("NuevaPolitica");
 app.UseAuthorization();
 
 app.MapControllers();

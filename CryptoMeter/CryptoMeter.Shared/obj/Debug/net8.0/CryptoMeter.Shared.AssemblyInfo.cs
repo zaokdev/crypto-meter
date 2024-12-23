@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoMeter.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff8fecd32ae1ce981f78a9a2ad66392a6808c866")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24a7ea1247503fa5fd6d68c0060f46d4d7759225")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoMeter.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoMeter.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
