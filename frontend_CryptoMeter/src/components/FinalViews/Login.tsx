@@ -15,7 +15,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { fetchPOST } from "@/helpers/fetchingData";
 import { toast, ToastContainer } from "react-toastify";
-import { getUserData, setTokenInLocalStorage } from "@/helpers/TokenHelpers";
+import { setTokenInLocalStorage } from "@/helpers/TokenHelpers";
 
 export const Login = () => {
   const navigate = useNavigate();

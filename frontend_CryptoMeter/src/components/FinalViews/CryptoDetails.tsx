@@ -1,8 +1,7 @@
 import { fetchGETSpecificCrypto } from "@/helpers/fetchingData";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
-import H3 from "../ui/H3";
 import H2 from "../ui/H2";
 
 const CryptoDetails = () => {

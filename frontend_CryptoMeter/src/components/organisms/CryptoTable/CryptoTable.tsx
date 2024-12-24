@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Bookmark, BookMarkedIcon } from "lucide-react";
+import { Bookmark } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData | any, TValue>[];
