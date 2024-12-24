@@ -20,12 +20,6 @@ export const fetchGETAuth = async (endpoint: string, token: string | null) => {
   }
 };
 
-export const fetchPOSTAuth = async (
-  endpoint: string,
-  token: string,
-  data: Object[] | Object
-) => {};
-
 /**Fetches data from the CoinLore server for 100 cryptocurrencies with a GET request.
  *
  * @returns {Object} fetchedData

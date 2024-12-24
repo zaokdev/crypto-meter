@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import H2 from "../ui/H2";
-import TrendyCryptos from "../organisms/TrendyCryptos";
 import { CryptoTable } from "../organisms/CryptoTable/CryptoTable";
 import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
 import { fetchGETCryptos } from "@/helpers/fetchingData";
