@@ -5,13 +5,11 @@ import { CryptoTable } from "../organisms/CryptoTable/CryptoTable";
 import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
 import { fetchGETCryptos } from "@/helpers/fetchingData";
 import { CirclesWithBar } from "react-loader-spinner";
-import H3 from "../ui/H3";
 import HomeAside from "../organisms/HomeAside";
 
 export const Home = () => {
   const [cryptos, setCryptos] = useState<[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
-  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     async function GettingAllCoins() {
@@ -21,7 +19,6 @@ export const Home = () => {
         setCryptos(fetching.data);
         console.log(fetching.data);
       } catch (err) {
-        setError("Failed to fetch cryptocurrencies. Please try again later.");
         console.error("Error fetching data:", err);
       } finally {
         setLoading(false); // Finaliza el estado de carga
@@ -32,9 +29,11 @@ export const Home = () => {
 
   return (
     <>
-      <section className="lg:col-span-5 md:mt-8">
-        <H2>Discover the Hottest Cryptocurrencies Shaping the Future!</H2>
-        <TrendyCryptos />
+      <section className="lg:col-span-5 mt-8">
+        <H2 className="mb-3">
+          Discover the Hottest Cryptocurrencies Shaping the Future!
+        </H2>
+
         {!loading ? (
           <CryptoTable columns={CryptocurrenciesColumns} data={cryptos} />
         ) : (

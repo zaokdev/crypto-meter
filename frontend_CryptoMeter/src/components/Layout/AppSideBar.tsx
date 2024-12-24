@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { Bitcoin, BookmarkIcon, ChevronUp, Repeat, User2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const AppSidebar = () => {
   const explore = [
@@ -72,13 +73,10 @@ export const AppSidebar = () => {
             className="w-[--radix-popper-anchor-width]"
           >
             <DropdownMenuItem>
-              <span>Account</span>
+              <Link to={"/auth/login"}>Log in</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <span>Billing</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Sign out</span>
+              <Link to={"/auth/register"}>Register</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

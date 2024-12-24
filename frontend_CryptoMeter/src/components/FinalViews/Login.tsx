@@ -15,6 +15,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { fetchPOST } from "@/helpers/fetchingData";
 import { toast, ToastContainer } from "react-toastify";
+import { getUserData, setTokenInLocalStorage } from "@/helpers/TokenHelpers";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -29,9 +30,7 @@ export const Login = () => {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
-      console.log(values);
       const loginRequest = await fetchPOST(`api/Auth/login`, values);
-      console.log(loginRequest.result.token);
 
       //Verificando si no existe el token
       if (!loginRequest.result.token) {
@@ -39,10 +38,13 @@ export const Login = () => {
         return;
       }
 
-      localStorage.setItem("CryptoMeter_JWT_Token", loginRequest.result.token);
+      //TOKEN
+      setTokenInLocalStorage(loginRequest.result.token);
       navigate("/"); // redirect to home page
-    } catch (ex) {
-      console.log(ex);
+    } catch (ex: any) {
+      toast.error(
+        `${ex.message}. Be sure to enable the API before trying Auth features!`
+      );
     }
   }
 

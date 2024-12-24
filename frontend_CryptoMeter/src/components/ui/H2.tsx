@@ -1,7 +1,12 @@
 import React from "react";
 
-const H2 = ({ children }) => {
-  return <h2 className="text-2xl">{children}</h2>;
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const H2 = ({ children, className }: Props) => {
+  return <h2 className={`text-2xl font-bold ${className}`}>{children}</h2>;
 };
 
 export default H2;

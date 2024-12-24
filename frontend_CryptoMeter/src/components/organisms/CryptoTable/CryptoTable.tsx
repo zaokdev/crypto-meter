@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
+import { useNavigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Bookmark, BookMarkedIcon } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+  columns: ColumnDef<TData | any, TValue>[];
   data: TData[];
 }
 
@@ -30,6 +30,8 @@ export function CryptoTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const navigate = useNavigate();
 
   return (
     <div className="rounded-md border">
@@ -68,6 +70,9 @@ export function CryptoTable<TData, TValue>({
                   <Button
                     variant={"default"}
                     className="rounded-xl bg-slate-600 hover:bg-slate-700 text-white"
+                    onClick={() => {
+                      navigate("/details/" + row.original.id);
+                    }}
                   >
                     Details
                   </Button>
