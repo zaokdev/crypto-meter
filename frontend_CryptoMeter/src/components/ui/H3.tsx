@@ -1,6 +1,10 @@
 import React from "react";
 
-const H3 = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const H3 = ({ children }: Props) => {
   return <h3 className="text-xl">{children}</h3>;
 };
 

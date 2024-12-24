@@ -1,5 +1,5 @@
 const TrendyCryptos = () => {
-  return <div>Trendy Space</div>;
+  return <div>Aquí va algo si se me ocurre q poner xd</div>;
 };
 
 export default TrendyCryptos;

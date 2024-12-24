@@ -1,4 +1,3 @@
-import React from "react";
 import H3 from "../ui/H3";
 
 const HomeAside = () => {

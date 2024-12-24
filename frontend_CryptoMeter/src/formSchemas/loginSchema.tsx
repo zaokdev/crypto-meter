@@ -2,8 +2,8 @@ import { z } from "zod";
 
 export const loginSchema = z.object({
   email: z.string().email({ message: "Must be an email" }),
-  password: z
-    .string()
+  password: z.string(),
+  /*
     .min(6)
     .regex(/[A-Z]/, "La contraseña debe incluir al menos una letra mayúscula.")
     .regex(/[a-z]/, "La contraseña debe incluir al menos una letra minúscula.")
@@ -11,5 +11,5 @@ export const loginSchema = z.object({
     .regex(
       /[!@#$%^&*(),.?":{}|<>]/,
       "La contraseña debe incluir al menos un carácter especial."
-    ),
+    )*/
 });

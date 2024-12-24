@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/formSchemas/loginSchema";
 import {
@@ -13,8 +14,11 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { fetchPOST } from "@/helpers/fetchingData";
+import { toast, ToastContainer } from "react-toastify";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -24,9 +28,22 @@ export const Login = () => {
   });
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    console.log(values);
-    const loginRequest = await fetchPOST(`api/Auth/login`, values);
-    console.log(loginRequest.result.token);
+    try {
+      console.log(values);
+      const loginRequest = await fetchPOST(`api/Auth/login`, values);
+      console.log(loginRequest.result.token);
+
+      //Verificando si no existe el token
+      if (!loginRequest.result.token) {
+        toast.error(loginRequest.errors[0]);
+        return;
+      }
+
+      localStorage.setItem("CryptoMeter_JWT_Token", loginRequest.result.token);
+      navigate("/"); // redirect to home page
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   return (
@@ -64,6 +81,7 @@ export const Login = () => {
         ></FormField>
         <Button type="submit">Log in</Button>
       </form>
+      <ToastContainer position="bottom-center" theme="dark" />
     </Form>
   );
 };

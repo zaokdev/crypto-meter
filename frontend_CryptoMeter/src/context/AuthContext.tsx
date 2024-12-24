@@ -1,24 +1,30 @@
-import React, { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, useContext, ReactNode, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
-// 1. Define el tipo de datos del contexto
+interface ContextType {}
 
-interface ContextType {
-  // Define aquí las propiedades que necesitas
-}
-
-// 2. Crea el contexto inicializándolo como undefined
 const AuthContext = createContext<ContextType | undefined>(undefined);
 
-// 3. Crea el proveedor del contexto
 interface AppProviderProps {
   children: ReactNode;
 }
 
 export const AuthProvider = ({ children }: AppProviderProps) => {
-  // Agrega aquí el estado o funciones que necesites
   const [userData, setUserData] = useState({});
 
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  /**
+   * Decodes the JWT token and sets the user data in the context
+   * @param {string} token
+   */
+  const decodeToken = (token: string) => {
+    setUserData(jwtDecode(token));
+  };
+
+  return (
+    <AuthContext.Provider value={{ userData, decodeToken }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 // 4. Crea un hook para consumir el contexto
