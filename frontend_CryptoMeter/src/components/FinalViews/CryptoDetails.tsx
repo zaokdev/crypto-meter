@@ -7,7 +7,6 @@ import Card from "../ui/UIcard";
 import { CryptoTicker } from "@/helpers/types";
 import H3 from "../ui/H3";
 import { StepBack } from "lucide-react";
-import { Component } from "@/helpers/mockupDonutChart";
 import CryptoDonutChart from "../ui/charts/CryptoDonutChart";
 import DetailsAside from "../organisms/DetailsAside";
 

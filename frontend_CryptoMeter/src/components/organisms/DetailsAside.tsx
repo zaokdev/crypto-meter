@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import H2 from "../ui/H2";
 import { fetchGETCoinLore } from "@/helpers/fetchingData";
 import { useParams } from "react-router-dom";
 import { CirclesWithBar } from "react-loader-spinner";
-import CryptoDetails from "../FinalViews/CryptoDetails";
 import { CryptoTable } from "./CryptoTable/CryptoTable";
 import { MarketsColumns } from "./CryptoTable/columnsMarket";
 
