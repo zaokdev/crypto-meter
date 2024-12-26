@@ -59,7 +59,11 @@ const Bookmarks = () => {
         <H2>Bookmarks</H2>
 
         <H3>Favorite cryptocurrencies</H3>
-        <CryptoTable columns={CryptocurrenciesColumns} data={Bookmarks} />
+        <CryptoTable
+          columns={CryptocurrenciesColumns}
+          data={Bookmarks}
+          isCryptoDetailsNeeded
+        />
       </div>
     </RequiresLogin>
   );
