@@ -19,11 +19,13 @@ import { Bookmark } from "lucide-react";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData | any, TValue>[];
   data: TData[];
+  isCryptoDetailsNeeded: boolean;
 }
 
 export function CryptoTable<TData, TValue>({
   columns,
   data,
+  isCryptoDetailsNeeded,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -66,23 +68,25 @@ export function CryptoTable<TData, TValue>({
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-                <TableCell className="flex">
-                  <Button
-                    variant={"default"}
-                    className="rounded-xl bg-slate-600 hover:bg-slate-700 text-white"
-                    onClick={() => {
-                      navigate("/details/" + row.original.id);
-                    }}
-                  >
-                    Details
-                  </Button>
-                  <Button
-                    variant={"secondary"}
-                    className="rounded-xl hover:bg-red-500 text-white"
-                  >
-                    <Bookmark />
-                  </Button>
-                </TableCell>
+                {isCryptoDetailsNeeded && (
+                  <TableCell className="flex">
+                    <Button
+                      variant={"default"}
+                      className="rounded-xl bg-slate-600 hover:bg-slate-700 text-white"
+                      onClick={() => {
+                        navigate("/details/" + row.original.id);
+                      }}
+                    >
+                      Details
+                    </Button>
+                    <Button
+                      variant={"secondary"}
+                      className="rounded-xl hover:bg-red-500 text-white"
+                    >
+                      <Bookmark />
+                    </Button>
+                  </TableCell>
+                )}
               </TableRow>
             ))
           ) : (

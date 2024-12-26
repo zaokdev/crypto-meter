@@ -16,7 +16,6 @@ export const Home = () => {
         setLoading(true);
         const fetching = await fetchGETCryptos();
         setCryptos(fetching.data);
-        console.log(fetching.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
@@ -34,7 +33,11 @@ export const Home = () => {
         </H2>
 
         {!loading ? (
-          <CryptoTable columns={CryptocurrenciesColumns} data={cryptos} />
+          <CryptoTable
+            columns={CryptocurrenciesColumns}
+            data={cryptos}
+            isCryptoDetailsNeeded={true}
+          />
         ) : (
           <div className="flex justify-center items-center h-full">
             <CirclesWithBar color="gray" />
