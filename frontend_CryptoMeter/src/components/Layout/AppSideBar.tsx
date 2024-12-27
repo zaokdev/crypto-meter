@@ -11,12 +11,17 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  deleteTokenInLocalStorage,
+  getUserData,
+  isLoggedIn,
+} from "@/helpers/TokenHelpers";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { Bitcoin, BookmarkIcon, ChevronUp, Repeat, User2 } from "lucide-react";
+import { Bitcoin, BookmarkIcon, ChevronUp, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const AppSidebar = () => {
@@ -26,17 +31,22 @@ export const AppSidebar = () => {
       url: "/",
       icon: Bitcoin,
     },
-    {
+    /*{
       title: "Exchanges",
       url: "/exchanges",
       icon: Repeat,
-    },
+    },*/
     {
       title: "Bookmarks",
       url: "/user/bookmarks",
       icon: BookmarkIcon,
     },
   ];
+
+  function handleLogOut() {
+    deleteTokenInLocalStorage();
+    window.location.reload();
+  }
 
   return (
     <Sidebar>
@@ -64,7 +74,8 @@ export const AppSidebar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton>
-              <User2 /> Username
+              <User2 />{" "}
+              {isLoggedIn() === true ? getUserData().name : "Username"}
               <ChevronUp className="ml-auto" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -72,12 +83,20 @@ export const AppSidebar = () => {
             side="top"
             className="w-[--radix-popper-anchor-width]"
           >
-            <DropdownMenuItem>
-              <Link to={"/auth/login"}>Log in</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link to={"/auth/register"}>Register</Link>
-            </DropdownMenuItem>
+            {isLoggedIn() === false ? (
+              <>
+                <DropdownMenuItem>
+                  <Link to={"/auth/login"}>Log in</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to={"/auth/register"}>Register</Link>
+                </DropdownMenuItem>
+              </>
+            ) : (
+              <DropdownMenuItem onClick={handleLogOut}>
+                Log out
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarFooter>

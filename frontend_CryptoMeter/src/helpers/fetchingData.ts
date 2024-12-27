@@ -1,12 +1,15 @@
 //FUNCTIONS FOR GET, POST, PUT, DELETE WITH FETCH
 
+import { getTokenInLocalStorage } from "./TokenHelpers";
+
 /**Fetches data from the API with the given endpoint with the GEET method, and requires Cryptometer API Auth.
  *
  * @param endpoint -- DO NOT add the first "/"
  * @param token
  */
-export const fetchGETAuth = async (endpoint: string, token: string | null) => {
+export const fetchGETAuth = async (endpoint: string) => {
   try {
+    const token = getTokenInLocalStorage();
     const response = await fetch(`https://localhost:7224/${endpoint}`, {
       headers: {
         "Content-Type": "application/json",

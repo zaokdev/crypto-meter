@@ -12,7 +12,7 @@ const CryptoDonutChart = ({ csupply, msupply }: any) => {
       label: "Max. Supply",
     },
     c_supply: {
-      label: "Circulating Supply",
+      label: "Non-circulating Supply",
       color: "hsl(var(--chart-3))",
     },
     m_supply: {

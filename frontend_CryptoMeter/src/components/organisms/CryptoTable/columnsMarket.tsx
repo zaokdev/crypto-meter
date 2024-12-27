@@ -9,6 +9,7 @@ export const MarketsColumns: ColumnDef<any>[] = [
     accessorKey: "quote",
     header: "Quote",
   },
+
   {
     accessorKey: "price_usd",
     header: "Price (USD)",

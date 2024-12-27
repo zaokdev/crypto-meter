@@ -15,6 +15,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Bookmark } from "lucide-react";
+import { toast } from "react-toastify";
+import { getUserData, isLoggedIn } from "@/helpers/TokenHelpers";
+import { useEffect, useState } from "react";
+import { fetchGETAuth } from "@/helpers/fetchingData";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData | any, TValue>[];
@@ -34,6 +38,29 @@ export function CryptoTable<TData, TValue>({
   });
 
   const navigate = useNavigate();
+
+  const [bookmarkList, setBookmarkList] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!isCryptoDetailsNeeded) {
+      return;
+    }
+
+    if (!isLoggedIn()) {
+      toast("Log in to enable bookmarking");
+      return;
+    }
+
+    const userData = getUserData();
+
+    const getUserBookMarks = async () => {
+      const response = await fetchGETAuth(
+        `api/UserBookMarks/ByUserId?userId=${userData.Id}`
+      );
+      setBookmarkList(response);
+    };
+    getUserBookMarks();
+  }, []);
 
   return (
     <div className="rounded-md border">
@@ -69,7 +96,7 @@ export function CryptoTable<TData, TValue>({
                   </TableCell>
                 ))}
                 {isCryptoDetailsNeeded && (
-                  <TableCell className="flex">
+                  <TableCell className="flex gap-3">
                     <Button
                       variant={"default"}
                       className="rounded-xl bg-slate-600 hover:bg-slate-700 text-white"
@@ -80,8 +107,19 @@ export function CryptoTable<TData, TValue>({
                       Details
                     </Button>
                     <Button
-                      variant={"secondary"}
-                      className="rounded-xl hover:bg-red-500 text-white"
+                      onClick={() => {
+                        if (!isLoggedIn()) {
+                          toast.error("You must be logged in to save a coin");
+                          return;
+                        }
+                        console.log(bookmarkList);
+                        toast(row.original.id);
+                      }}
+                      className={`rounded-xl hover:bg-red-500 text-white ${
+                        bookmarkList.includes(Number.parseInt(row.original.id))
+                          ? "bg-red-700"
+                          : "bg-slate-800"
+                      }`}
                     >
                       <Bookmark />
                     </Button>

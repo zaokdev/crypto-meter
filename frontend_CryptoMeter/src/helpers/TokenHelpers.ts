@@ -8,6 +8,13 @@ export const setTokenInLocalStorage = (token: string) => {
   localStorage.setItem("CryptoMeter_JWT_Token", token);
 };
 
+/**Deletes the token from the local storage.
+ *
+ */
+export const deleteTokenInLocalStorage = () => {
+  localStorage.removeItem("CryptoMeter_JWT_Token");
+};
+
 /**Gets the token from local storage and returns it. If the token is not found, returns null.
  *
  * @returns
@@ -20,7 +27,7 @@ export const getTokenInLocalStorage = () => {
  *
  * @returns
  */
-export const getUserData = () => {
+export const getUserData: () => any = () => {
   const token = getTokenInLocalStorage();
   if (token === null) {
     return "NO USER DATA";

@@ -5,6 +5,7 @@ import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
 import { fetchGETCryptos } from "@/helpers/fetchingData";
 import { CirclesWithBar } from "react-loader-spinner";
 import HomeAside from "../organisms/HomeAside";
+import { ToastContainer } from "react-toastify";
 
 export const Home = () => {
   const [cryptos, setCryptos] = useState<[]>([]);
@@ -45,6 +46,7 @@ export const Home = () => {
         )}
       </section>
       <HomeAside />
+      <ToastContainer position="bottom-center" theme="dark" limit={3} />
     </>
   );
 };

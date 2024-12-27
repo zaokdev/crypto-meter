@@ -1,7 +1,7 @@
 import { fetchGETSpecificCrypto } from "@/helpers/fetchingData";
 import { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import H2 from "../ui/H2";
 import Card from "../ui/UIcard";
 import { CryptoTicker } from "@/helpers/types";
@@ -34,7 +34,9 @@ const CryptoDetails = () => {
   return (
     <>
       <section className="mt-8 col-span-5">
-        <StepBack className="mt-4" />
+        <Link to={"/"}>
+          <StepBack />
+        </Link>
         <h1 className="text-center text-4xl font-bold">{crypto.name}</h1>
         <H2 className="text-center text-2xl font-bold">{crypto.symbol}</H2>
         <div className="sm:grid md:grid-cols-12 sm:grid-cols-8 flex flex-col gap-4 mt-4">
@@ -59,7 +61,10 @@ const CryptoDetails = () => {
             {crypto.msupply != "" && crypto.csupply != "" ? (
               <CryptoDonutChart
                 msupply={Number.parseFloat(crypto.msupply)}
-                csupply={Number.parseFloat(crypto.csupply)}
+                csupply={
+                  Number.parseFloat(crypto.msupply) -
+                  Number.parseFloat(crypto.csupply)
+                }
               />
             ) : (
               <span>Not enough data</span>
@@ -68,7 +73,7 @@ const CryptoDetails = () => {
         </div>
       </section>
       {/*MARKETS TABLE AT SIDE BAR */}
-      <section className="col-span-3 bg-slate-900 p-6">
+      <section className="col-span-3 bg-slate-900 p-6 mt-6">
         <DetailsAside />
       </section>
     </>

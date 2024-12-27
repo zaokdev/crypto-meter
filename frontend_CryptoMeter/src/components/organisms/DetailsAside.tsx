@@ -13,6 +13,7 @@ const DetailsAside = () => {
     const fetchCoinLore = async () => {
       const response = await fetchGETCoinLore(`coin/markets/?id=${id}`);
       setMarkets(response);
+      console.log(response);
     };
 
     fetchCoinLore();

@@ -5,10 +5,7 @@ export const CryptocurrenciesColumns: ColumnDef<any>[] = [
     accessorKey: "name",
     header: "Name",
   },
-  {
-    accessorKey: "base",
-    header: "Base",
-  },
+
   {
     accessorKey: "symbol",
     header: "Symbol",

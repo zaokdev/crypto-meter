@@ -13,23 +13,15 @@ const Bookmarks = () => {
 
   useEffect(() => {
     const gettingUserBookMarks = async () => {
-      const token = getTokenInLocalStorage();
       const userData: any = getUserData();
       const response = await fetchGETAuth(
-        `api/UserBookMarks/byUserId?userId=${userData.Id}`,
-        token
+        `api/UserBookMarks/byUserId?userId=${userData.Id}`
       );
       return response;
     };
 
     const gettingTheCoins = async () => {
       const arrayCryptos = await gettingUserBookMarks();
-
-      //TESTING
-      arrayCryptos.push(40);
-      arrayCryptos.push(33);
-      arrayCryptos.push(32);
-      arrayCryptos.push(21);
 
       let stringCryptos = arrayCryptos[0];
       if (arrayCryptos.length > 1) {
