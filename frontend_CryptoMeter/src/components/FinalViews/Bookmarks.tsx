@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RequiresLogin from "../organisms/RequiresLogin";
-import { getTokenInLocalStorage, getUserData } from "@/helpers/TokenHelpers";
+import { getUserData } from "@/helpers/TokenHelpers";
 import { fetchGETAuth, fetchGETSpecificCrypto } from "@/helpers/fetchingData";
 import { CirclesWithBar } from "react-loader-spinner";
 import H2 from "../ui/H2";
