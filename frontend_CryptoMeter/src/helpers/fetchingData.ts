@@ -22,6 +22,53 @@ export const fetchGETAuth = async (endpoint: string) => {
     console.error(ex);
   }
 };
+/**POST Request to the API with the given endpoint with the POST method, and requires Cryptometer API Auth. NO DATA IS SENT IN THE BODY.
+ *
+ * @param endpoint -DO NOT INCLUDE THE FIRST /
+ * @returns
+ */
+export const fetchPOSTAuthWithQueryData = async (endpoint: string) => {
+  try {
+    const token = getTokenInLocalStorage();
+    if (!token) {
+      throw new Error("No token found");
+    }
+    const response = await fetch(`https://localhost:7224/${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (ex: any) {
+    throw new Error(ex.message);
+  }
+};
+
+/**Function to send a DELETE request to the API with the given endpoint with DELETE method, and requires Auth
+ *
+ * @param endpoint
+ * @returns
+ */
+export const fetchDELETEAuthWithQueryData = async (endpoint: string) => {
+  try {
+    const token = getTokenInLocalStorage();
+    if (!token) {
+      throw new Error("No token found");
+    }
+    const response = await fetch(`https://localhost:7224/${endpoint}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (ex: any) {
+    throw new Error(ex.message);
+  }
+};
 
 /**Fetches data from the CoinLore server for 100 cryptocurrencies with a GET request.
  *

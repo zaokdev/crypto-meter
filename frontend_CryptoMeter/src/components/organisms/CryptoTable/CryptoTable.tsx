@@ -18,7 +18,11 @@ import { Bookmark } from "lucide-react";
 import { toast } from "react-toastify";
 import { getUserData, isLoggedIn } from "@/helpers/TokenHelpers";
 import { useEffect, useState } from "react";
-import { fetchGETAuth } from "@/helpers/fetchingData";
+import {
+  fetchDELETEAuthWithQueryData,
+  fetchGETAuth,
+  fetchPOSTAuthWithQueryData,
+} from "@/helpers/fetchingData";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData | any, TValue>[];
@@ -107,13 +111,44 @@ export function CryptoTable<TData, TValue>({
                       Details
                     </Button>
                     <Button
-                      onClick={() => {
+                      onClick={async () => {
                         if (!isLoggedIn()) {
                           toast.error("You must be logged in to save a coin");
                           return;
                         }
-                        console.log(bookmarkList);
-                        toast(`El id de la cripto es: ${row.original.id}`);
+
+                        const cryptoId = Number.parseInt(row.original.id);
+                        const { Id } = getUserData();
+
+                        if (bookmarkList.includes(cryptoId)) {
+                          //DELETE BOOKMARK
+                          try {
+                            await fetchDELETEAuthWithQueryData(
+                              `api/UserBookMarks?UserId=${Id}&cryptoId=${cryptoId}`
+                            )
+                              .then(() => {
+                                const updatedBookmarkList = bookmarkList.filter(
+                                  (item) => item !== cryptoId
+                                );
+                                setBookmarkList(updatedBookmarkList);
+                              })
+                              .then(() => toast("Removed successfully"));
+                          } catch (ex: any) {
+                            console.log(ex);
+                            toast.error(ex.message);
+                          } finally {
+                            return;
+                          }
+                        }
+                        //ADD BOOKMARK
+                        try {
+                          await fetchPOSTAuthWithQueryData(
+                            `api/UserBookMarks?UserId=${Id}&cryptoId=${cryptoId}`
+                          ).then(() => toast("Added successfully"));
+                          setBookmarkList((prev: any) => [...prev, cryptoId]);
+                        } catch (ex: any) {
+                          toast.error(ex.message);
+                        }
                       }}
                       className={`rounded-xl hover:bg-red-500 text-white ${
                         bookmarkList?.includes(Number.parseInt(row.original.id))

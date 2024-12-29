@@ -10,35 +10,45 @@ import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
 
 const Bookmarks = () => {
   const [Bookmarks, setBookmarks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const gettingUserBookMarks = async () => {
-      const userData: any = getUserData();
-      const response = await fetchGETAuth(
-        `api/UserBookMarks/byUserId?userId=${userData.Id}`
-      );
-      return response;
+      try {
+        setLoading(true);
+        const userData: any = getUserData();
+        const response = await fetchGETAuth(
+          `api/UserBookMarks/byUserId?userId=${userData.Id}`
+        );
+        return response;
+      } catch (ex: any) {
+        console.error(ex.message);
+      }
     };
 
     const gettingTheCoins = async () => {
-      const arrayCryptos = await gettingUserBookMarks();
-
-      let stringCryptos = arrayCryptos[0];
-      if (arrayCryptos.length > 1) {
-        for (let i = 1; i < arrayCryptos.length; i++) {
-          stringCryptos += "," + arrayCryptos[i];
+      try {
+        const arrayCryptos = await gettingUserBookMarks();
+        let stringCryptos = arrayCryptos[0];
+        if (arrayCryptos.length > 1) {
+          for (let i = 1; i < arrayCryptos.length; i++) {
+            stringCryptos += "," + arrayCryptos[i];
+          }
         }
-      }
 
-      //FETCHING ALL CRYPTOS
-      const response = await fetchGETSpecificCrypto(`/?id=${stringCryptos}`);
-      setBookmarks(response);
+        //FETCHING ALL CRYPTOS
+        const response = await fetchGETSpecificCrypto(`/?id=${stringCryptos}`);
+        setBookmarks(response);
+        setLoading(false);
+      } catch (ex) {
+        setLoading(false);
+      }
     };
 
     gettingTheCoins();
   }, []);
 
-  if (Bookmarks?.length === 0) {
+  if (loading) {
     return (
       <RequiresLogin>
         <CirclesWithBar color="gray" />

@@ -49,7 +49,7 @@ const CryptoDetails = () => {
             <H3>BTC Price</H3>
             <span>{crypto.price_btc}</span>
           </Card>
-          <Card className="sm:col-span-4 w-full">
+          <Card className="sm:col-span-4 w-full p-4">
             <H3>Market Cap</H3>
             <span>
               ${new Intl.NumberFormat("en-US").format(crypto.market_cap_usd)}
