@@ -113,10 +113,10 @@ export function CryptoTable<TData, TValue>({
                           return;
                         }
                         console.log(bookmarkList);
-                        toast(row.original.id);
+                        toast(`El id de la cripto es: ${row.original.id}`);
                       }}
                       className={`rounded-xl hover:bg-red-500 text-white ${
-                        bookmarkList.includes(Number.parseInt(row.original.id))
+                        bookmarkList?.includes(Number.parseInt(row.original.id))
                           ? "bg-red-700"
                           : "bg-slate-800"
                       }`}

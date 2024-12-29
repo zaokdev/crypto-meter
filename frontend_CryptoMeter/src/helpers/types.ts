@@ -12,4 +12,7 @@ export type CryptoTicker = {
   csupply: any;
   tsupply: any;
   msupply: any;
+  percent_change_1h: any;
+  percent_change_24h: any;
+  percent_change_7d: any;
 };

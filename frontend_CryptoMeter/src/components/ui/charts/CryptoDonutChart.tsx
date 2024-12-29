@@ -21,8 +21,6 @@ const CryptoDonutChart = ({ csupply, msupply }: any) => {
     },
   } satisfies ChartConfig;
 
-  console.log(typeof csupply, typeof msupply);
-
   const chartData = [
     {
       supply: csupply,
