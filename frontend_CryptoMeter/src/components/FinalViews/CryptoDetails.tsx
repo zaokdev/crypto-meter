@@ -57,18 +57,20 @@ const CryptoDetails = () => {
           </Card>
 
           {/* TWO CHARTS */}
-          <section className="col-span-12 grid grid-cols-12 gap-4">
-            <Card className="sm:col-span-6 col-span-12 h-full">
+          <section className="col-span-12 grid grid-cols-12 gap-4 w-full">
+            <Card className="sm:col-span-6 col-span-12 h-full w-full">
+              <H3 className="mb-4">Change rate</H3>
               <CryptoLinebarChart
                 percent_change_1h={crypto.percent_change_1h}
                 percent_change_24h={crypto.percent_change_24h}
                 percent_change_7d={crypto.percent_change_7d}
               />
             </Card>
-            <Card className="sm:col-span-6 col-span-12 h-full">
+            <Card className="sm:col-span-6 col-span-12 h-full w-full">
+              <H3>Circulating Supply</H3>
               {crypto.msupply != "" && crypto.csupply != "" ? (
                 <CryptoDonutChart
-                  msupply={Number.parseFloat(crypto.msupply)}
+                  msupply={Number.parseFloat(crypto.csupply)}
                   csupply={
                     Number.parseFloat(crypto.msupply) -
                     Number.parseFloat(crypto.csupply)

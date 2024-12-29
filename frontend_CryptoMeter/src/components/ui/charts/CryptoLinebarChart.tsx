@@ -29,7 +29,7 @@ const CryptoLinebarChart = ({
   } satisfies ChartConfig;
 
   return (
-    <ChartContainer config={chartConfig} className="w-full h-full p-4">
+    <ChartContainer config={chartConfig} className="w-full h-full">
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <ChartTooltip
@@ -40,7 +40,7 @@ const CryptoLinebarChart = ({
           <LabelList position="top" dataKey="time" fillOpacity={1} />
           {chartData.map((item: any) => (
             <Cell
-              key={item.month}
+              key={item.time}
               fill={item.percent > 0 ? "hsl(var(--chart-1))" : "red"}
             />
           ))}

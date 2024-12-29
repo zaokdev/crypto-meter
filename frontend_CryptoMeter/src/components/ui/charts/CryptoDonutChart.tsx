@@ -16,7 +16,7 @@ const CryptoDonutChart = ({ csupply, msupply }: any) => {
       color: "hsl(var(--chart-3))",
     },
     m_supply: {
-      label: "Max. Supply",
+      label: "Circulating Supply",
       color: "hsl(var(--chart-4))",
     },
   } satisfies ChartConfig;
@@ -73,7 +73,7 @@ const CryptoDonutChart = ({ csupply, msupply }: any) => {
                       y={(viewBox.cy || 0) + 24}
                       className="fill-muted-foreground"
                     >
-                      Max. Supply
+                      Circulating Supply
                     </tspan>
                   </text>
                 );
