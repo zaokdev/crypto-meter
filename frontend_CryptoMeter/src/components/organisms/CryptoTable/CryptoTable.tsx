@@ -147,7 +147,6 @@ export function CryptoTable<TData, TValue>({
                               })
                               .then(() => toast("Removed successfully"));
                           } catch (ex: any) {
-                            console.log(ex);
                             setIsProcessing(false);
                             toast.error(ex.message);
                           } finally {

@@ -16,7 +16,6 @@ const CryptoLinebarChart = ({
   percent_change_24h,
   percent_change_7d,
 }: Props) => {
-  console.log(percent_change_1h, percent_change_24h, percent_change_7d);
   const chartData: any = [
     { time: "1h", percent: percent_change_1h },
     { time: "24h", percent: percent_change_24h },
