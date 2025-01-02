@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/formSchemas/loginSchema";
 import {
@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { fetchPOST } from "@/helpers/fetchingData";
 import { toast, ToastContainer } from "react-toastify";
 import { setTokenInLocalStorage } from "@/helpers/TokenHelpers";
+import H2 from "../ui/H2";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -42,15 +43,20 @@ export const Login = () => {
       setTokenInLocalStorage(loginRequest.result.token);
       navigate("/"); // redirect to home page
     } catch (ex: any) {
-      toast.error(
-        `${ex.message}. Be sure to enable the API before trying Auth features!`
-      );
+      console.error(ex);
+      toast.error(`${ex.message}`);
     }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="border h-screen flex flex-col items-stretch justify-center p-16 gap-8 md:"
+      >
+        <H2 className="text-center md:text-left md:text-4xl">
+          Log in to dive into CryptoMeter
+        </H2>
         <FormField
           control={form.control}
           name="email"
@@ -81,6 +87,12 @@ export const Login = () => {
             </FormItem>
           )}
         ></FormField>
+        <Link
+          to={"/auth/register"}
+          className="underline text-blue-500 hover:text-blue-700"
+        >
+          Not registered yet? Click here
+        </Link>
         <Button type="submit">Log in</Button>
       </form>
       <ToastContainer position="bottom-center" theme="dark" />

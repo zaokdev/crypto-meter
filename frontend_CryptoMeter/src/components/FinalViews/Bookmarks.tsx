@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
 import RequiresLogin from "../organisms/RequiresLogin";
-import { getUserData } from "@/helpers/TokenHelpers";
+import {
+  getUserData,
+  invalidTokenDetected,
+  isTokenStillValid,
+} from "@/helpers/TokenHelpers";
 import { fetchGETAuth, fetchGETSpecificCrypto } from "@/helpers/fetchingData";
 import { CirclesWithBar } from "react-loader-spinner";
 import H2 from "../ui/H2";
 import H3 from "../ui/H3";
 import { CryptoTable } from "../organisms/CryptoTable/CryptoTable";
 import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
+import { useNavigate } from "react-router-dom";
 
 const Bookmarks = () => {
   const [Bookmarks, setBookmarks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const gettingUserBookMarks = async () => {
       try {
         setLoading(true);
+        const tokenValid = isTokenStillValid();
+        if (!tokenValid) {
+          invalidTokenDetected(navigate);
+          return;
+        }
         const userData: any = getUserData();
         const response = await fetchGETAuth(
           `api/UserBookMarks/byUserId?userId=${userData.Id}`

@@ -5,7 +5,7 @@ import { CryptocurrenciesColumns } from "../organisms/CryptoTable/columns";
 import { fetchGETCryptos } from "@/helpers/fetchingData";
 import { CirclesWithBar } from "react-loader-spinner";
 import HomeAside from "../organisms/HomeAside";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 export const Home = () => {
   const [cryptos, setCryptos] = useState<[]>([]);
@@ -17,8 +17,8 @@ export const Home = () => {
         setLoading(true);
         const fetching = await fetchGETCryptos();
         setCryptos(fetching.data);
-      } catch (err) {
-        console.error("Error fetching data:", err);
+      } catch (err: any) {
+        toast.error("Error fetching data:", err.message);
       } finally {
         setLoading(false); // Finaliza el estado de carga
       }

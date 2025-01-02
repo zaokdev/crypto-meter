@@ -1,4 +1,6 @@
 import { jwtDecode } from "jwt-decode";
+import { getCurrentTime } from "./generalHelpers";
+import { NavigateFunction } from "react-router-dom";
 
 /**Sets the token in the local storage.
  *
@@ -21,6 +23,20 @@ export const deleteTokenInLocalStorage = () => {
  */
 export const getTokenInLocalStorage = () => {
   return localStorage.getItem("CryptoMeter_JWT_Token");
+};
+
+/**Function that checks if the token is valid.
+ *
+ * @returns True if the token is valid, false otherwise.
+ */
+export const isTokenStillValid = () => {
+  const { exp } = getUserData();
+  return exp > getCurrentTime();
+};
+
+export const invalidTokenDetected = (navigate: NavigateFunction) => {
+  deleteTokenInLocalStorage();
+  navigate("/login");
 };
 
 /**Gets user data if exists

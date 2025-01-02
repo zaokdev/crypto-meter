@@ -16,7 +16,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Bookmark } from "lucide-react";
 import { toast } from "react-toastify";
-import { getUserData, isLoggedIn } from "@/helpers/TokenHelpers";
+import {
+  getUserData,
+  invalidTokenDetected,
+  isLoggedIn,
+  isTokenStillValid,
+} from "@/helpers/TokenHelpers";
 import { useEffect, useState } from "react";
 import {
   fetchDELETEAuthWithQueryData,
@@ -44,6 +49,7 @@ export function CryptoTable<TData, TValue>({
   const navigate = useNavigate();
 
   const [bookmarkList, setBookmarkList] = useState<any[]>([]);
+  const [isProcessing, setIsProcessing] = useState<boolean>();
 
   useEffect(() => {
     if (!isCryptoDetailsNeeded) {
@@ -58,6 +64,11 @@ export function CryptoTable<TData, TValue>({
     const userData = getUserData();
 
     const getUserBookMarks = async () => {
+      const tokenValid = isTokenStillValid();
+      if (!tokenValid) {
+        invalidTokenDetected(navigate);
+        return;
+      }
       const response = await fetchGETAuth(
         `api/UserBookMarks/ByUserId?userId=${userData.Id}`
       );
@@ -112,8 +123,10 @@ export function CryptoTable<TData, TValue>({
                     </Button>
                     <Button
                       onClick={async () => {
+                        setIsProcessing(true);
                         if (!isLoggedIn()) {
                           toast.error("You must be logged in to save a coin");
+                          setIsProcessing(false);
                           return;
                         }
 
@@ -135,8 +148,10 @@ export function CryptoTable<TData, TValue>({
                               .then(() => toast("Removed successfully"));
                           } catch (ex: any) {
                             console.log(ex);
+                            setIsProcessing(false);
                             toast.error(ex.message);
                           } finally {
+                            setIsProcessing(false);
                             return;
                           }
                         }
@@ -147,14 +162,19 @@ export function CryptoTable<TData, TValue>({
                           ).then(() => toast("Added successfully"));
                           setBookmarkList((prev: any) => [...prev, cryptoId]);
                         } catch (ex: any) {
+                          setIsProcessing(false);
                           toast.error(ex.message);
+                        } finally {
+                          setIsProcessing(false);
+                          return;
                         }
                       }}
-                      className={`rounded-xl hover:bg-red-500 text-white ${
+                      className={`disabled:bg-gray-900 rounded-xl hover:bg-red-500 text-white ${
                         bookmarkList?.includes(Number.parseInt(row.original.id))
                           ? "bg-red-700"
                           : "bg-slate-800"
                       }`}
+                      disabled={isProcessing}
                     >
                       <Bookmark />
                     </Button>

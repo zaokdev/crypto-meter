@@ -22,9 +22,10 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { Bitcoin, BookmarkIcon, ChevronUp, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const AppSidebar = () => {
+  const navigate = useNavigate();
   const explore = [
     {
       title: "Cryptocurrencies",
@@ -45,7 +46,7 @@ export const AppSidebar = () => {
 
   function handleLogOut() {
     deleteTokenInLocalStorage();
-    window.location.reload();
+    navigate("/auth/login");
   }
 
   return (
