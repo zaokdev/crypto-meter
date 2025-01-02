@@ -36,7 +36,7 @@ export const isTokenStillValid = () => {
 
 export const invalidTokenDetected = (navigate: NavigateFunction) => {
   deleteTokenInLocalStorage();
-  navigate("/login");
+  navigate("/auth/login");
 };
 
 /**Gets user data if exists
