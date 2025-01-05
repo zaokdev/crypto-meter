@@ -54,6 +54,48 @@
   },
   {
     "ContainingType": "CryptoMeter.API.Controllers.UserBookmarksController",
+    "Method": "AddBookmark",
+    "RelativePath": "api/UserBookmarks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cryptoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CryptoMeter.API.Controllers.UserBookmarksController",
+    "Method": "DeleteBookmark",
+    "RelativePath": "api/UserBookmarks",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cryptoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CryptoMeter.API.Controllers.UserBookmarksController",
     "Method": "Get",
     "RelativePath": "api/UserBookmarks/all",
     "HttpMethod": "GET",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mrrxYG+pA7g=",
+  "dgSpecHash": "yZljEU1TSDc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Data\\CryptoMeter.Data.csproj",
+  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Data\\CryptoMeter.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kevin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.11\\microsoft.aspnetcore.cryptography.internal.8.0.11.nupkg.sha512",

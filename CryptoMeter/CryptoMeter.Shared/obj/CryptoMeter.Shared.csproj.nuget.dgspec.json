@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj": {}
+    "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj": {
+    "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj",
         "projectName": "CryptoMeter.Shared",
-        "projectPath": "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj",
+        "projectPath": "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\CryptoMeter.Shared.csproj",
         "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\obj\\",
+        "outputPath": "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

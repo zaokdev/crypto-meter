@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cD299LVX9Fs=",
+  "dgSpecHash": "Rc7ynmI595U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.API\\CryptoMeter.API.csproj",
+  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Work\\desarrollo_web\\Frontend\\Proyectos_portafolio\\crypto-meter\\CryptoMeter\\CryptoMeter.API\\CryptoMeter.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kevin\\.nuget\\packages\\bouncycastle.cryptography\\2.5.0\\bouncycastle.cryptography.2.5.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
