@@ -16,3 +16,5 @@ export type CryptoTicker = {
   percent_change_24h: any;
   percent_change_7d: any;
 };
+
+export const APIurl = "https://cryptometerapi20250104223303.azurewebsites.net/";

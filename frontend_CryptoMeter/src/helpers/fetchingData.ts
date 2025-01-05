@@ -1,5 +1,5 @@
 //FUNCTIONS FOR GET, POST, PUT, DELETE WITH FETCH
-
+import { APIurl } from "./types";
 import { getTokenInLocalStorage } from "./TokenHelpers";
 
 /**Fetches data from the API with the given endpoint with the GEET method, and requires Cryptometer API Auth.
@@ -10,7 +10,7 @@ import { getTokenInLocalStorage } from "./TokenHelpers";
 export const fetchGETAuth = async (endpoint: string) => {
   try {
     const token = getTokenInLocalStorage();
-    const response = await fetch(`https://localhost:7224/${endpoint}`, {
+    const response = await fetch(`${APIurl}${endpoint}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ export const fetchPOSTAuthWithQueryData = async (endpoint: string) => {
     if (!token) {
       throw new Error("No token found");
     }
-    const response = await fetch(`https://localhost:7224/${endpoint}`, {
+    const response = await fetch(`${APIurl}${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const fetchDELETEAuthWithQueryData = async (endpoint: string) => {
     if (!token) {
       throw new Error("No token found");
     }
-    const response = await fetch(`https://localhost:7224/${endpoint}`, {
+    const response = await fetch(`${APIurl}${endpoint}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export const fetchGETCoinLore = async (endpoint: string) => {
  * @returns
  */
 export const fetchPOST = async (endpoint: string, data: Object) => {
-  const response = await fetch(`https://localhost:7224/${endpoint}`, {
+  const response = await fetch(`${APIurl}${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
